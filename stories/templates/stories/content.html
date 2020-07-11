@@ -1,0 +1,37 @@
+{% extends 'sitewide/base.html' %}
+{% load embed_video_tags %}
+
+{% block content %}
+
+
+<div class="container text-center" style="width: 100%;">
+    <h2><a href="#">{{ video.videoTitle }}</h2></a>
+    <br>
+    <div class="embed-responsive embed-responsive-4by3" >
+        {% video video.youtubeVideo 'tiny' %}
+    </div>
+    <br>
+    <br>
+    <h4 style="color: gray; ">{{ contents.count }} post{{ contents.count|pluralize }} for this video.</h4>
+    <br>
+</div>
+<br>
+<br>
+</div>
+    <br>
+    <div class="container" style="height: 1px; width: 100%;  border-top-style: dashed; border-color: rgb(212, 212, 212);"></div>
+    <br><br>
+    {% for content in contents %}
+    <div class="container">
+        <h3>Comment by: <a href="{{ content.commentChannel }}" target="_blank">{{ content.commentUser }}</a></h3>
+        <h6 style="color: gray;"><i>Posted on the site on: {{ content.commentDate }}</i></h6>
+        <br>
+        <p style="font-size: 20px;" align="justify">{{ content.commentContent|safe }}</p>
+        <br>
+        <div style="height: 1px; width: 100%;  border-top-style: dashed; border-color: rgb(212, 212, 212);"></div>
+        <br>
+        <br>
+    </div>
+    {% endfor %}
+
+{% endblock %}

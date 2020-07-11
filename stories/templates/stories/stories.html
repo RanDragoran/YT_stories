@@ -1,0 +1,36 @@
+{% extends 'sitewide/base.html' %}
+{% load embed_video_tags %}
+
+{% block content %}
+<div class="container">    
+    <div class="row row-cols-2 row-cols-md-2">
+        
+        
+        {% for story in stories %}
+                        
+        <div class="col mb-4">
+            <a href="{% url 'stories:stories' story.commentKey_id %}" style="text-decoration: none; color: black;"><div class="card">
+                <div class="card-image-top">
+                    <div class="embed-responsive embed-responsive-4by3" >
+                        {% video story.commentKey.youtubeVideo %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ story.commentKey }}</h5>
+                    <p class="card-text">{{ story.commentContent|truncatechars:150 }}</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        Posted on: {{ story.commentDate }}<br>
+                        Comment by: {{ story.commentUser }}
+                    </small>
+                  </div>
+            </div></a>
+            </div>
+        
+        {% endfor %}
+
+    </div>
+</div>      
+{% endblock %}
+    
