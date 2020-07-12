@@ -1,0 +1,36 @@
+{% extends 'sitewide/base.html' %}
+{% load embed_video_tags %}
+
+{% block content %}
+<div class="container text-center" style="width: 100%;">
+    <h2><a href="#">{{ story.commentKey.videoTitle }}</h2></a>
+    <br>
+    <div class="embed-responsive embed-responsive-4by3" >
+        {% video story.commentKey.youtubeVideo %}
+    </div>
+    <br>
+    <br>
+    <h4 style="color: gray; ">{{ count }} post{{ count|pluralize }} for this video.</h4>
+    <a href="{% url 'stories:stories' story.commentKey_id %}" class="btn btn-warning">View All Stories On This Video</a>
+    <br>
+</div>
+<br>
+<br>
+</div>
+    <br>
+    <div class="container" style="height: 1px; width: 100%;  border-top-style: dashed; border-color: rgb(212, 212, 212);"></div>
+    <br><br>
+    <div class="container">
+        <h3>Comment by: <a href="{{ story.commentKey.commentChannel }}" target="_blank">{{ story.commentUser }}</a></h3>
+        <h6 style="color: gray;"><i>Posted on the site on: {{ story.commentDate }}</i></h6>
+        <br>
+        <p style="font-size: 20px;" align="justify">{{ story.commentContent|safe }}</p>
+        <br>
+        <div style="height: 1px; width: 100%;  border-top-style: dashed; border-color: rgb(212, 212, 212);"></div>
+        <br>
+        <br>
+    </div>
+
+
+{% endblock %}
+    

@@ -16,3 +16,9 @@ def all_stories(request):
     video = Youtube_Entry.objects.all()
     storiesParameter = {'videos': video, 'stories': stories}
     return render(request, 'stories/stories.html', storiesParameter)
+
+def one_story(request, story_id):
+    story = get_object_or_404(CommentStories, pk=story_id)
+    count = CommentStories.objects.filter(commentKey=story.commentKey).count()
+    oneStory = {'story': story, 'count':count}
+    return render(request, 'stories/view_one.html', oneStory)
