@@ -36,6 +36,39 @@
         {% endfor %}
 
     </div>
-</div>      
+</div>
+<br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        
+        {% if stories.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1"><<</a>
+            </li>       
+            <li class="page-item">
+                <a class="page-link" href="?page={{ stories.previous_page_number }}">Previous</a>
+            </li>
+        {% endif %}
+                
+        {% for num in stories.paginator.page_range %}
+            
+            {% if stories.number == num %}
+                <li class="page-item active"><a class="page-link">{{ num }}</a></li>
+            {% elif num > stories.number|add:'-3' and num < stories.number|add:'3' %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+
+        {% endfor %}
+
+        {% if stories.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ stories.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ stories.paginator.num_pages }}">>></a>
+            </li>   
+        {% endif %}
+        </ul>
+  </nav>      
 {% endblock %}
     
