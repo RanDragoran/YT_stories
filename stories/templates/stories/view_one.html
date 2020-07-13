@@ -5,7 +5,7 @@
 <div class="container">
 
     <!--video card-->
-  <div class="row row-cols-1 row-cols-md-2">
+  <div class="row row-cols-1 row-cols-md-4">
 
       <div class="col col-md-auto text-center"  style="margin-bottom: 5px;">
           <div class="card" style="width: 20rem;">
@@ -18,16 +18,16 @@
             </div>
       </div> 
       
-      <div class="col text-center" style="margin-bottom: 5px;">
+      <div class="col col-md-8 text-center" style="margin-bottom: 5px;">
           <div class="card">
-              <div class="card-header">
+              <div class="card-header" style="background-color: brown; color: white;">
                 <h4>{{ story.commentKey.videoTitle }}</h4>
               </div>
               <div class="card-header">
-                    <a class="btn btn-warning btn-lg btn-block" href="{% url 'stories:stories' story.commentKey_id %}"  data-toggle="tooltip" data-placement="top" title="View All">
+                    <a href="{% url 'stories:stories' story.commentKey_id %}"  data-toggle="tooltip" data-placement="top" title="View All">
                         <h5>There are a total of {{ count }} post{{ count|pluralize }} in this video.</h5></a>
                 </div>
-              <div class="card-body">
+              <div class="card-body"  style="background-color: rgb(235, 235, 235);">
                 <blockquote class="blockquote mb-0">
                   <p>
                       <b>Disclaimer:</b><br>
