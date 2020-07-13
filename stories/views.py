@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    return render(request, 'stories/home.html')
+    return render(request, 'stories/home.html', {'navBar': 'home'})
 
 def content(request, content_id):
     video = get_object_or_404(Youtube_Entry, pk=content_id)
@@ -20,7 +20,7 @@ def all_stories(request):
     page = request.GET.get('page')
     stories = paginator.get_page(page)
 
-    storiesParameter = {'videos': video, 'stories': stories}
+    storiesParameter = {'videos': video, 'stories': stories, 'navBar':'updates'}
 
     return render(request, 'stories/stories.html', storiesParameter)
 

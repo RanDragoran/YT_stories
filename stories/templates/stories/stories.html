@@ -2,7 +2,7 @@
 {% load embed_video_tags %}
 
 {% block content %}
-<div class="container">  
+<div class="container" id="main">  
     <div class="row row-cols-1 row-cols-md-2">
         
         
@@ -20,8 +20,8 @@
                     <p class="card-text">{{ story.commentContent|striptags|truncatechars:150 }}</p>
                     <br>
                     <div class="container text-center">
-                        <a href="{% url 'stories:one_story' story.id %}" class="btn btn-primary">View This Story Only</a>
-                        <a href="{% url 'stories:stories' story.commentKey_id %}" class="btn btn-success">View All Stories On This Video</a>
+                        <a href="{% url 'stories:one_story' story.id %}" class="btn btn-primary" style="margin-bottom: 5px;">View This Story Only</a>
+                        <a href="{% url 'stories:stories' story.commentKey_id %}" class="btn btn-success" style="margin-bottom: 5px;">View All Stories On This Video</a>
                     </div>
                 </div>
                 <div class="card-footer">

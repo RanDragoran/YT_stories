@@ -2,36 +2,53 @@
 {% load embed_video_tags %}
 
 {% block content %}
+<div class="container">
 
+      <!--video card-->
+    <div class="row row-cols-1 row-cols-md-2">
 
-<div class="container text-center" style="width: 100%;">
-    <h2><a href="#">{{ video.videoTitle }}</h2></a>
-    <br>
-    <div class="embed-responsive embed-responsive-4by3" >
-        {% video video.youtubeVideo 'tiny' %}
+        <div class="col col-md-auto text-center"  style="margin-bottom: 5px;">
+            <div class="card" style="width: 20rem;">
+                <div class="card-img-top">
+                    <div class="embed-responsive embed-responsive-4by3" >
+                        {% video video.youtubeVideo %}
+                    </div>
+                </div>
+
+              </div>
+        </div> 
+        
+        <div class="col text-center" style="margin-bottom: 5px;">
+            <div class="card">
+                <div class="card-header">
+                  <h4>{{ video.videoTitle }}</h4>
+                </div>
+                <div class="card-header">
+                    <h5>There are a total of {{ contents.count }} post{{ contents.count|pluralize }} in this video.</h5>
+                  </div>
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <p>
+                        <b>Disclaimer:</b><br>
+                        All the contents on this page belong to the rightful owners. The administrators take responsibility of any mistakes and outdated contents. Having said that, enjoy reading!
+                    </p>
+                  </blockquote>
+                </div>
+              </div>
+        </div>
     </div>
-    <br>
-    <br>
-    <h4 style="color: gray; ">{{ contents.count }} post{{ contents.count|pluralize }} for this video.</h4>
-    <br>
-</div>
-<br>
-<br>
-</div>
-    <br>
-    <div class="container" style="height: 1px; width: 100%;  border-top-style: dashed; border-color: rgb(212, 212, 212);"></div>
-    <br><br>
-    {% for content in contents %}
-    <div class="container">
-        <h3>Comment by: <a href="{{ content.commentChannel }}" target="_blank">{{ content.commentUser }}</a></h3>
-        <h6 style="color: gray;"><i>Posted on the site on: {{ content.commentDate }}</i></h6>
-        <br>
-        <p style="font-size: 20px;" align="justify">{{ content.commentContent|safe }}</p>
-        <br>
-        <div style="height: 1px; width: 100%;  border-top-style: dashed; border-color: rgb(212, 212, 212);"></div>
-        <br>
-        <br>
-    </div>
-    {% endfor %}
+         <!-- Stories -->
+        <div class="row row-cols-1 row-cols-md-1">
+            {% for content in contents %}
+                <div class="container"  style="margin-bottom: 5px; margin-top: 10px; border-top-style:dashed ; border-top-width: 2px; border-top-color: gainsboro; background-color: rgb(252, 252, 252); padding-top: 10px;">
+                    <h3>Comment by: <a href="{{ content.commentChannel }}" target="_blank">{{ content.commentUser }}</a></h3>
+                    <h6 style="color: gray;"><i>Posted on the site on: {{ content.commentDate }}</i></h6>
+                    <br>
+                    <p style="font-size: 20px;" align="justify">{{ content.commentContent|safe }}</p>
+                </div>
+                {% endfor %}
+            </div>
 
+ 
+</div>
 {% endblock %}
