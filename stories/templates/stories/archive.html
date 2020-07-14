@@ -1,0 +1,70 @@
+{% extends 'sitewide/base.html' %}
+{% load embed_video_tags %}
+
+{% block content %}
+<head>
+    <title>Archive</title>
+</head>
+    <div class="container">
+        <div class="row alert-warning text-center row-cols-1 row-cols-md-1 text-right" style="margin-bottom: 10px; margin-top: 10px;">
+            <h2>Total Number of Stories: {{ stories.count }} || Total Number of Videos: {{ videoCount }}</h2>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3">
+                {% for video in videos %}
+                <div class="card text-center" style="margin-top: 10px;">
+                    <div class="card-image-top">
+                        <div class="embed-responsive embed-responsive-4by3" >
+                            {% video video.youtubeVideo %}
+                        </div>
+                    </div>
+                    <div class="card-header" style="overflow-x: auto;">
+                        <h6 data-toggle="tooltip" data-placement="top" title="{{ video.videoTitle }}">{{ video.videoTitle|truncatechars:35 }}</h6>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Total Post{{ video.stories.count|pluralize }}: {{ video.stories.count }}</h5>
+                        <a href="{% url 'stories:stories' video.id %}" class="btn btn-danger btn-lg btn-large">View All</a>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-1 text-center" style="margin-top : 10px;">
+            <br>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    
+                    {% if videos.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1"><<</a>
+                        </li>       
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ videos.previous_page_number }}">Previous</a>
+                        </li>
+                    {% endif %}
+                            
+                    {% for num in videos.paginator.page_range %}
+                        
+                        {% if videos.number == num %}
+                            <li class="page-item active"><a class="page-link">{{ num }}</a></li>
+                        {% elif num > videos.number|add:'-3' and num < videos.number|add:'3' %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    {% if videos.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ videos.next_page_number }}">Next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ videos.paginator.num_pages }}">>></a>
+                        </li>   
+                    {% endif %}
+                    </ul>
+            </nav>  
+
+        </div>
+    </div>
+{% endblock%}
+    

@@ -29,3 +29,16 @@ def one_story(request, story_id):
     count = CommentStories.objects.filter(commentKey=story.commentKey).count()
     oneStory = {'story': story, 'count':count}
     return render(request, 'stories/view_one.html', oneStory)
+
+def archive(request):
+    videos = Youtube_Entry.objects.all().order_by('videoTitle')
+    stories = CommentStories.objects.all()
+    videoCount = videos.count()
+
+    paginator = Paginator(videos, 30)
+    page = request.GET.get('page')
+    videos = paginator.get_page(page)
+
+    dictionary = {'videos': videos, 'stories': stories, 'navBar':'archive', 'videoCount':videoCount}
+
+    return render(request, 'stories/archive.html', dictionary)

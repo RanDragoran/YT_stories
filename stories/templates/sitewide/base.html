@@ -10,7 +10,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #b33939;">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #b33939;">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,15 +24,18 @@
           <li class="nav-item">
             <a class="nav-link {% if navBar == 'updates' %}active{% endif %}" href="{% url 'stories:all_stories' %}">Latest Updates</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {% if navBar == 'archive' %}active{% endif %}" href="{% url 'stories:archive' %}">Archive</a>
+          </li>
         </ul>
       </div>
     </nav>
 
-    <br>
-
     {% block content %}{% endblock %}
 
-    <br>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Fixed bottom</a>
+    </nav>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
