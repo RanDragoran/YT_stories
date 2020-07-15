@@ -1,0 +1,21 @@
+{% extends 'sitewide/base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <title>Blogs</title>
+</head>
+<div class="container" style="margin-bottom: 10px;">
+    <div class="row justify-content-center row-cols-md-auto" style="margin-bottom: 10px;">
+        <img src="{% static 'blog/logo.png' %}"  style="width: 200px; height: 150px; margin-top: 20px;">
+    </div>
+
+    <div class="row text-center row-cols-md-1">
+        <h1>Hello there my friend!</h1>
+        <br><br><br>
+        <h4>Welcome to the blog site of YTStories and I hope you are enjoying yourself in this site. This is not the type of a blog that contains thoughts that are too scary even for the internet.
+             What you'll find here are updates, news or thoughts of the site's administrators. We are not forcing you to read but if you have spare time we won't mid :)</h4>
+    </div>
+</div>
+{% endblock content %}
+    
