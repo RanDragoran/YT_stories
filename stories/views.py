@@ -16,7 +16,7 @@ def all_stories(request):
     stories = CommentStories.objects.all().order_by('-commentDate')
     video = Youtube_Entry.objects.all()
 
-    paginator = Paginator(stories, 10)
+    paginator = Paginator(stories, 15)
     page = request.GET.get('page')
     stories = paginator.get_page(page)
 
