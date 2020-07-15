@@ -23,7 +23,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Total Post{{ video.stories.count|pluralize }}: {{ video.stories.count }}</h5>
-                        <a href="{% url 'stories:stories' video.id %}" class="btn btn-danger btn-lg btn-large">View All</a>
+                        <a href="{% url 'stories:stories' video.id %}" class="btn btn-secondary btn-lg btn-large">View All</a>
                     </div>
                 </div>
                 {% endfor %}
