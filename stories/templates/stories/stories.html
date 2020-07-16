@@ -4,12 +4,12 @@
 <head>
     <title>Latest Updates</title>
 </head>
-<div class="container">  
+<div class="container" style="padding-top: 10px;">  
     <div class="row row-cols-1 row-cols-md-3">
         {% for story in stories %}
                         
         <div class="col mb-4">
-            <a href="{% url 'stories:stories' story.commentKey_id %}" style="text-decoration: none; color: black;"><div class="card">
+            <div class="card" style="border-radius: 15px;">
                 <div class="card-image-top">
                     <div class="embed-responsive embed-responsive-4by3" >
                         {% video story.commentKey.youtubeVideo %}
@@ -30,7 +30,7 @@
                         Comment by: {{ story.commentUser }}
                     </small>
                   </div>
-            </div></a>
+            </div>
             </div>
         
         {% endfor %}

@@ -42,3 +42,6 @@ def archive(request):
     dictionary = {'videos': videos, 'stories': stories, 'navBar':'archive', 'videoCount':videoCount}
 
     return render(request, 'stories/archive.html', dictionary)
+
+def about(request):
+    return render(request, 'stories/about.html', {'navBar': 'about'})

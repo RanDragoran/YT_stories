@@ -1,0 +1,37 @@
+{% extends 'sitewide/base.html' %}
+
+
+{% block content %}
+{% load static %}
+    <head>
+        <title>About</title>
+    </head>
+    <div class="container" style="padding-top: 20px; margin-bottom: 10px;">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="column col-lg-9">
+                <h1>About This Site:</h1>
+                <br>
+                <p align="justify" style="font-size: 20px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                    YTStories aims to bring anecdotes shared by the users of YouTube through the comment section. All of the contents are manually collected and posted in this website. Thus, mistakes such as a comment being in a wrong video, the content being outdated, having a wrong username and probably more are all the responsibilities of the site administrators. Furthermore, the owners of the comments have nothing to do with this website and that is why their respective channels are linked in every post to give credits. All the information about the embedded YouTube videos can be accessed by playing the video in its' own platform.
+                    <br><br>
+                    If you enjoyed reading the contents posted in here and want to have more in the future, please consider giving a small donation through the channels provided. We are more than happy to continue bringing you good anecdotes from the comment section of YouTube and to make this website more fun and make your experience here better than ever.
+                    <br><br>
+                    Finally, we will gladly accept submissions provided that you give the YouTube link and a screenshot of the comment by reaching us through the channels provided. Suggestions are also welcome.
+                    <br><br>
+                    Have fun!
+                </p>
+            </div>
+
+            <div class="column text-center col-lg-3">
+                <h2>Donate:</h2>
+                <br>
+                <a href=""><img src="{% static 'stories/paypal.webp' %}"></a>
+                <br><br>
+                <h2>Reach us:</h2>
+                <br>
+                <a href=""><img src="{% static 'stories/f.webp' %}" style="height: 110px; width: 110px;"></a>       
+                <a href=""><img src="{% static 'stories/g.png' %}"  style="height: 110px; width: 110px;"></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
