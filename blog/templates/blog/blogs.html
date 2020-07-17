@@ -10,12 +10,27 @@
         <img src="{% static 'blog/logo.png' %}"  style="width: 200px; height: 150px; margin-top: 20px;">
     </div>
 
-    <div class="row text-center row-cols-md-1">
+    <div class="row text-center row-cols-md-1" style="margin-bottom: 20px;">
         <h1>Hello there my friend!</h1>
         <br><br><br>
-        <h4>Welcome to the blog site of YTStories and we hope you are enjoying yourself in this site. This is not the type of a blog that contains thoughts that are too scary even for the internet.
-             What you'll find here are updates, news or thoughts of the site's administrators. We are not forcing you to read but if you have spare time we won't mind :)</h4>
+        <h4>
+            Welcome to the blog site of YTStories and we hope you are enjoying yourself in this site. This is not the type of a blog that contains thoughts that are too scary even for the internet.
+             What you'll find here are updates, news or thoughts of the site's administrators. We are not forcing you to read but if you have spare time we won't mind :)
+        </h4>
+        <br><br><br>
+        <h5>Last Updated on: {{ date.blogDate }}</h5>
     </div>
+        {% for blog in blogs %}
+            <div class="row text-center row-cols-md-1" style="border-top-style: solid; border-bottom-style: solid; border-color: gainsboro; border-width: 1px; margin-bottom: 10px;">
+                <h2>{{blog.blogTitle}}</h2>
+                <br><br>
+                <h6><i>Posted on: {{ blog.blogDate }}</i></h6>
+                <h6><i>By: {{ blog.blogWriter }}</i></h6>
+                <br>
+                <br>
+                <p align="justify" style="font-size: 20px;">{{blog.blogContent|safe}}</p>
+            </div>
+        {% endfor %}
 </div>
 {% endblock content %}
     
