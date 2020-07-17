@@ -9,12 +9,31 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="{% static 'blog/logo.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Merriweather:wght@700&family=Rowdies&display=swap" rel="stylesheet">
+    <style>
+      .nav-item .nav-link{
+        font-family: 'Merriweather', serif; 
+        font-size: 17px;
+      }
+
+      #footer-items .column li{
+        font-family: 'Inconsolata', monospace;
+        font-size: 15px;
+        color: rgb(206, 206, 206);
+        list-style-type: none;
+        display: inline;
+        text-align: center;
+      }
+      #footer-items .column li a{
+        color: rgb(206, 206, 206);
+      }
+    </style>
   </head>
   <body class="d-flex flex-column min-vh-100">
 
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="{% if navBar == 'blog' %} background-color: #674172; {% elif navBar == 'archive' %} background-color: #2c3e50 {% else %} background-color: #b33939; {% endif %}">
-      <a href="{% url 'home' %}"><img src="{% static 'blog/logo.png' %}" width="65" height="50" class="d-inline-block align-top" alt="" loading="lazy"></a>
-      <a class="navbar-brand" href="{% url 'home' %}">YTStories</a>
+      <a href="{% url 'home' %}"><img src="{% static 'blog/logo.png' %}" width="65" height="55" class="d-inline-block align-top" alt="" loading="lazy"></a>
+      <a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Rowdies', cursive;">YTStories</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,6 +55,9 @@
           <li class="nav-item">
             <a class="nav-link {% if navBar == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" target="_blank"  href="">Donate</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -44,8 +66,34 @@
 
     <footer class="mt-auto">
       <div class="container-fluid" style="background-color: #1e272e;">
-        <div class="row justify-content-center">
-          <p style="color: white;"> HAHAH</p>
+        <div class="row row-cols-1 row-cols-lg-4" id="footer-items">
+
+          <div class="column text-center">
+            <ul>
+              <li><b>YTStories Created: </b></li>
+              <li>2020</li>
+            </ul>
+          </div>
+
+          <div class="column text-center">
+            <li><b>All contents belong to the righful owner</b></li>
+          </div>
+
+        <div class="column text-center">
+          <ul>
+            <li><b>Contact us:</b></li>
+            <li><a href="">Gmail</a></li>
+            <li>/</li>
+            <li><a href="">Facebook</a></li>
+          </ul>
+        </div>
+
+      <div class="column text-center">
+        <ul>
+          <li><b>Donate:</b></li>
+          <li><a href="">Paypal</a></li>
+        </ul>
+    </div>
         </div>
       </div>
     </footer>
