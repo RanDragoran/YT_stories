@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%=m_891h&mg$@7-q7$-ig*h5^xokhsx71%)f1qp=#5%h5yhbav'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['kalle022.pythonanywhere.com']
+ALLOWED_HOSTS = ['YTStories.pythonanywhere.com']
 
 
 # Application definition
