@@ -9,7 +9,18 @@ def home(request):
 def content(request, content_id):
     video = get_object_or_404(Youtube_Entry, pk=content_id)
     vidContent = CommentStories.objects.filter(commentKey=content_id).order_by('-commentDate')
-    contentParameters = {'video' : video, 'contents':vidContent}
+
+    try:
+        nextVideo = Youtube_Entry.objects.filter(id__gt= video.id).order_by('id')[:1].get().id
+    except Youtube_Entry.DoesNotExist:
+        nextVideo = Youtube_Entry.objects.order_by('id')[0].id 
+
+    try:
+        previousVideo = Youtube_Entry.objects.filter(id__lt= video.id).order_by('-id')[:1].get().id
+    except Youtube_Entry.DoesNotExist:
+        previousVideo = Youtube_Entry.objects.order_by('-id')[0].id 
+
+    contentParameters = {'video' : video, 'contents':vidContent, 'nextVideo': nextVideo, 'previousVideo': previousVideo}
     return render(request, 'stories/content.html', contentParameters )
 
 def all_stories(request):

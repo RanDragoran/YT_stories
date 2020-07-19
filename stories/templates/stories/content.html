@@ -41,7 +41,7 @@
         </div>
     </div>
          <!-- Stories -->
-        <div class="row row-cols-1 row-cols-md-1">
+        <div class="row row-cols-1 row-cols-md-1" style="margin-bottom: 10px;">
             {% for content in contents %}
                 <div class="container"  style="margin-bottom: 5px; margin-top: 10px; border-top-style:dashed ; border-top-width: 2px; border-top-color: gainsboro; background-color: rgb(252, 252, 252); padding-top: 10px;">
                     <h3>Comment by: <a href="{{ content.commentChannel }}" target="_blank">{{ content.commentUser }}</a></h3>
@@ -54,6 +54,11 @@
                 {% endfor %}
             </div>
 
- 
+          <div class="row row-cols-1 row-cols-md-1">
+            <div class="column text-center"  style="border-top-style:dashed ; border-top-width: 2px; border-top-color: gainsboro; background-color: rgb(252, 252, 252); padding-top: 10px;">
+              <a class="btn btn-secondary btn-lg" href="{% url 'stories:stories' previousVideo %}">Previous</a>
+              <a class="btn btn-secondary btn-lg" href="{% url 'stories:stories' nextVideo %}">Next</a>
+            </div>
+          </div>
 </div>
 {% endblock %}
