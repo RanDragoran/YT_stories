@@ -3,8 +3,8 @@ from .models import CommentStories, Youtube_Entry
 from django.core.paginator import Paginator
 
 # Create your views here.
-def home(request):
-    return render(request, 'stories/home.html', {'navBar': 'home'})
+# def home(request):
+#     return render(request, 'stories/home.html', {'navBar': 'home'})
 
 def content(request, content_id):
     video = get_object_or_404(Youtube_Entry, pk=content_id)
@@ -23,7 +23,7 @@ def content(request, content_id):
     contentParameters = {'video' : video, 'contents':vidContent, 'nextVideo': nextVideo, 'previousVideo': previousVideo}
     return render(request, 'stories/content.html', contentParameters )
 
-def all_stories(request):
+def home(request):
     stories = CommentStories.objects.all().order_by('-commentDate')
     video = Youtube_Entry.objects.all()
 
@@ -31,9 +31,9 @@ def all_stories(request):
     page = request.GET.get('page')
     stories = paginator.get_page(page)
 
-    storiesParameter = {'videos': video, 'stories': stories, 'navBar':'updates'}
+    storiesParameter = {'videos': video, 'stories': stories, 'navBar':'home'}
 
-    return render(request, 'stories/stories.html', storiesParameter)
+    return render(request, 'stories/home.html', storiesParameter)
 
 def one_story(request, story_id):
     story = get_object_or_404(CommentStories, pk=story_id)
