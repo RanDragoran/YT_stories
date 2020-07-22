@@ -1,43 +1,48 @@
 {% extends 'sitewide/base.html' %}
 {% load embed_video_tags %}
 {% block content %}
+{% load static %}
 <head>
     <title>Home</title>
 </head>
-<div class="container" style="padding-top: 10px;">  
+<div class="container" style="padding-top: 10px">
     <div class="row row-cols-1 row-cols-md-3">
-        {% for story in stories %}
-                        
-        <div class="col mb-4">
-            <div class="card" style="border-radius: 15px;">
-                <div class="card-image-top">
-                    <div class="embed-responsive embed-responsive-4by3" >
-                        {% video story.commentKey.youtubeVideo %}
+
+        {% for story in stories %}              
+            <div class="col mb-4">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-image-top">
+                        <div class="embed-responsive embed-responsive-4by3" >
+                            {% video story.commentKey.youtubeVideo %}
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ story.commentKey }}</h5>
-                    <p class="card-text">{{ story.commentContent|striptags|truncatechars:150 }}</p>
-                    <br>
-                    <div class="container text-center">
-                        <a href="{% url 'stories:one_story' story.id %}" class="btn btn-primary" style="margin-bottom: 5px;">View This Story Only</a>
-                        <a href="{% url 'stories:stories' story.commentKey_id %}" class="btn btn-success" style="margin-bottom: 5px;">View All Stories On This Video</a>
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ story.commentKey }}</h5>
+                        <p class="card-text">{{ story.commentContent|striptags|truncatechars:150 }}</p>
+                        <br>
+                        <div class="container text-center">
+                            <a href="{% url 'stories:one_story' story.id %}" class="btn btn-primary" style="margin-bottom: 5px;">View This Story Only</a>
+                            <a href="{% url 'stories:stories' story.commentKey_id %}" class="btn btn-success" style="margin-bottom: 5px;">View All Stories On This Video</a>
+                        </div>
                     </div>
+
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            Posted on: {{ story.commentDate }}<br>
+                            Comment by: {{ story.commentUser }}
+                        </small>
+                    </div>
+
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        Posted on: {{ story.commentDate }}<br>
-                        Comment by: {{ story.commentUser }}
-                    </small>
-                  </div>
             </div>
-            </div>
-        
         {% endfor %}
 
     </div>
 </div>
+
 <br>
+
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         
