@@ -1,0 +1,11 @@
+---
+application:
+  name: "yt-stories"
+  project: "Bots?"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-yt-stories"
+  routes:
+  - application_name: "yt-stories"
+    paths:
+    - "/*"
